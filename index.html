@@ -4071,6 +4071,8 @@ function sstar(c,x,y,r,col,rot){c.fillStyle=col;c.beginPath();for(let i=0;i<10;i
     halo:{c:0xff9a3a,s:2.8,o:.45},light:{c:0xffa040,i:1.4,fl:.3,r:9},fx:{cols:[0xffe070,0xff7a2a,0xff2f7a],rate:70,life:.7,size:.28,up:.6,spread:.8,back:.2,map:'star'}}
   );
 })();
+/* every paid ball now costs 100-500 coins, keeping the old order from cheapest to dearest */
+(function(){const paid=SKINS.filter(s=>s.price>0).sort((a,b)=>a.price-b.price),n=paid.length;paid.forEach((s,i)=>{s.price=Math.round((100+(n>1?i/(n-1):0)*400)/10)*10})})();
 function grantStarSkins(){
   const t=starTotal(),n=[];
   for(const s of SKINS)if(s.stars&&t>=s.stars&&!save.owned.includes(s.id)){save.owned.push(s.id);n.push(s)}
